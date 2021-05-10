@@ -1,10 +1,20 @@
-name: learn-github-actions
+name: Try
 on: [push]
 jobs:
-  check-bats-version:
+  push_to_registry:
+    name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: docker.pkg.github.com
+          repository: PortalHubYT/template_server/devbuild
+          tag_with_ref: true

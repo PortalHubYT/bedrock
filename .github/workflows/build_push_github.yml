@@ -1,12 +1,12 @@
 name: ci
-
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   docker:
+    name: Build push
     runs-on: ubuntu-latest
     steps:
       -

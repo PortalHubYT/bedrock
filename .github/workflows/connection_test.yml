@@ -19,5 +19,5 @@ jobs:
     container:
       image: ghcr.io/portalhubyt/template_server:latest
     steps:
-      - run: chmod 777 ./start.sh
-      - run: sh ./start.sh
+      - run: ls -l
+      - run: pwd

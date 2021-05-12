@@ -20,4 +20,6 @@ jobs:
       image: ghcr.io/portalhubyt/template_server:latest
     steps:
       - run: ls -l
+      
+      - run: ls -l ../
       - run: pwd

@@ -20,6 +20,9 @@ jobs:
       - run: |
          docker pull ghcr.io/portalhubyt/template_server:latest
          docker run -e EULA=TRUE -p 222:25565 -d ghcr.io/portalhubyt/template_server:latest
+      - run: |
+         python --version
+         python3 --version
          
   test_co:
     runs-on: ubuntu-latest

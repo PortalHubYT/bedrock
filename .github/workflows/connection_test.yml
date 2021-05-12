@@ -27,5 +27,5 @@ jobs:
     steps:
       - run: |
          docker pull ghcr.io/portalhubyt/mcs_health_check:latest
-         docker run -e MCS_PORT=222 ghcr.io/portalhubyt/mcs_health_check:latest
+         docker run -e MCS_PORT=222 -e MCS_IP=localhost --network host ghcr.io/portalhubyt/mcs_health_check:latest
          

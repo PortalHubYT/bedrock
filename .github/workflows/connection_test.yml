@@ -20,4 +20,5 @@ jobs:
       image: ghcr.io/portalhubyt/template_server:latest
     steps:
       - run: |
+          chmod 777 start.sh
           sh start.sh

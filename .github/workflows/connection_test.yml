@@ -19,7 +19,7 @@ jobs:
     steps:
       - run: |
          docker pull ghcr.io/portalhubyt/template_server:latest
-         docker run -e EULA=TRUE -p 222:25565 ghcr.io/portalhubyt/template_server:latest
+         docker run -e EULA=TRUE -p 222:25565 -d ghcr.io/portalhubyt/template_server:latest
          
   test_co:
     runs-on: ubuntu-latest

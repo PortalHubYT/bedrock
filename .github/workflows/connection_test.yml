@@ -19,7 +19,7 @@ jobs:
     container:
       image: ghcr.io/portalhubyt/template_server:latest
     steps:
-      - run: ls -l
+      - run: ls -la
       
-      - run: ls -l ../
+      - run: ls -la ../
       - run: pwd

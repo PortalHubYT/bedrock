@@ -20,5 +20,4 @@ jobs:
       image: ghcr.io/portalhubyt/template_server:latest
     steps:
       - run: |
-          echo "Running in container"
-          top
+          start.sh

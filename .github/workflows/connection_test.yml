@@ -21,4 +21,4 @@ jobs:
     steps:
       - run: |
           echo "Running in container"
-          docker ps
+          top

@@ -1,0 +1,34 @@
+name: run
+on: push
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+  launch:
+    runs-on: ubuntu-latest
+    needs: login
+    steps:
+      - run: |
+         docker pull ghcr.io/portalhubyt/template_server:latest
+         docker run -e EULA=TRUE -p 222:25565 -d ghcr.io/portalhubyt/template_server:latest
+      - run: |
+         python --version
+         python3 --version
+         
+  test_co:
+    runs-on: ubuntu-latest
+    needs: login
+    steps:
+      - run: |
+         docker pull ghcr.io/portalhubyt/mcs_health_check:latest
+         docker run -e MCS_PORT=222 -e MCS_IP=localhost --network host ghcr.io/portalhubyt/mcs_health_check:latest
+         

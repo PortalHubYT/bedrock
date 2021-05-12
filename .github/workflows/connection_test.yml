@@ -21,3 +21,11 @@ jobs:
          docker pull ghcr.io/portalhubyt/template_server:latest
          docker run -e EULA=TRUE -p 222:25565 ghcr.io/portalhubyt/template_server:latest
          
+  test_co:
+    runs-on: ubuntu-latest
+    needs: login
+    steps:
+      - run: |
+         docker pull ghcr.io/portalhubyt/mcs_health_check:latest
+         docker run -e MCS_PORT=222 ghcr.io/portalhubyt/mcs_health_check:latest
+         

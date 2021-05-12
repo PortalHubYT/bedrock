@@ -2,10 +2,9 @@ name: test
 on: push
 
 jobs:
-   container:
-    name: launching_container
+   pull:
+    name: pull_container
     runs-on: ubuntu-latest
-    container: ghcr.io/portalhubyt/server_template:latest
     steps:
       -
         name: Login to GitHub Container Registry
@@ -14,6 +13,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      
+   container:
+    name: launching_container
+    runs-on: ubuntu-latest
+    container: ghcr.io/portalhubyt/server_template:latest
+    steps:
       - 
          name: echotest
          run: echo This job does specify a container.

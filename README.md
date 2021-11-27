@@ -12,7 +12,7 @@ docker pull ghcr.io/portalhubyt/template_server:latest
 
 - Run the image
 ```
-docker run -d -e EULA=TRUE -p 555:25565 ghcr.io/portalhubyt/template_server:latest 
+docker run -d -e EULA=TRUE -p 25575:25575 -p 25565:25565 ghcr.io/portalhubyt/template_server:latest 
 ```
 
 Mandatory options:

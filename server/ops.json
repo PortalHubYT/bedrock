@@ -22,5 +22,11 @@
     "name": "prtl",
     "level": 4,
     "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "6f0fc90f-6a03-474b-b083-e1d0e0becf4c",
+    "name": "Miaoumix",
+    "level": 4,
+    "bypassesPlayerLimit": false
   }
 ]

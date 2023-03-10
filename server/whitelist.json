@@ -1,18 +1,32 @@
 [
   {
     "uuid": "fa4b70bc-19fa-43e2-8a3c-0b1327c272fb",
-    "name": "PortalHub"
+    "name": "PortalHub",
+    "level": 4,
+    "bypassesPlayerLimit": false
   },
   {
     "uuid": "3bb63529-c550-40b2-8c4a-63c8cd634648",
-    "name": "funyrom"
+    "name": "funyrom",
+    "level": 4,
+    "bypassesPlayerLimit": false
   },
   {
     "uuid": "9ff762a9-20f8-4f95-a21a-f4afb9c83dbe",
-    "name": "portal_hub"
+    "name": "portal_hub",
+    "level": 4,
+    "bypassesPlayerLimit": false
   },
   {
     "uuid": "6ee4b9f5-66e9-4849-aade-eb81e5f9034f",
-    "name": "prtl"
+    "name": "prtl",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "6f0fc90f-6a03-474b-b083-e1d0e0becf4c",
+    "name": "Miaoumix",
+    "level": 4,
+    "bypassesPlayerLimit": false
   }
 ]

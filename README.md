@@ -6,12 +6,12 @@ It it hosted at `ghcr.io/portalhubyt/template_server_1_19:latest`. Anytime there
 # Usage:
 - Fetch the image
 ```
-docker pull ghcr.io/portalhubyt/template_server_1_19:latest
+docker pull ghcr.io/portalhubyt/template_server:latest
 ```
 
 - Run the image
 ```
-docker run -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 ghcr.io/portalhubyt/template_server_1_19:latest 
+docker run -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 ghcr.io/portalhubyt/template_server:latest 
 ```
 
 Mandatory options:

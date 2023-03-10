@@ -1,7 +1,7 @@
 # Template 1.19 Minecraft Server
 
 This is an automated repository that automatically uploads a **template 1.19 minecraft server** to the GitHub Container Registry.
-It it hosted at `ghcr.io/portalhubyt/template_server_1_19:latest`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
+It it hosted at `ghcr.io/portalhubyt/template_server:latest`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
 
 # Usage:
 - Fetch the image

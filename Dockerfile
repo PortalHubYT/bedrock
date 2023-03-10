@@ -1,8 +1,5 @@
-FROM openjdk:8u292-jre-slim-buster
+FROM amazoncorretto:17
 
 COPY server /server
 WORKDIR /server
 CMD ["./start.sh"]
-
-
-

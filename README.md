@@ -3,7 +3,7 @@
 IMPORTANT: The rate limit for players packets has been disabled in the paper config; beware for use in production
 
 This is an automated repository that automatically uploads a **template 1.19 minecraft server** to the GitHub Container Registry.
-It it hosted at `ghcr.io/portalhubyt/template_server:latest`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
+It it hosted at `ghcr.io/portalhubyt/template_server:1_19_4`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
 
 # Usage:
 - Fetch the image

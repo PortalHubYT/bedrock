@@ -50,3 +50,4 @@ Additional options:
 | [`Sudo`](https://www.spigotmc.org/resources/sudo.13730/)      | Execute arbitrary commands from another player |
 | [`VoidGen`](https://www.spigotmc.org/resources/voidgen.25391/)      | Create completely empty worlds from [`Multiverse-Core`](https://www.spigotmc.org/resources/multiverse-core.390/) |
 | [`WorldGuard`](https://dev.bukkit.org/projects/worldguard)      | Put restrictions into specific part of the map |
+| [`ServerTap`](https://github.com/phybros/servertap)             | Allows to communicate with the server over a REST API |

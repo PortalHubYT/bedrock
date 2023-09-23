@@ -18,7 +18,7 @@ jobs:
     needs: login
     steps:
       - run: |
-         docker pull ghcr.io/portalhubyt/template_server:latest
+         docker pull ghcr.io/portalhubyt/template_server:1_19_4
          docker run -e EULA=TRUE -p 222:25565 -d ghcr.io/portalhubyt/template_server:latest
       - run: |
          python --version
@@ -29,6 +29,6 @@ jobs:
     needs: login
     steps:
       - run: |
-         docker pull ghcr.io/portalhubyt/mcs_health_check:latest
+         docker pull ghcr.io/portalhubyt/mcs_health_check:1_19_4
          docker run -e MCS_PORT=222 -e MCS_IP=localhost --network host ghcr.io/portalhubyt/mcs_health_check:latest
          

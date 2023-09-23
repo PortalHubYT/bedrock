@@ -3,25 +3,25 @@
 IMPORTANT: The rate limit for players packets has been disabled in the paper config; beware for use in production
 
 This is an automated repository that automatically uploads a **template 1.19.4 minecraft server** to the GitHub Container Registry.
-It it hosted at `ghcr.io/portalhubyt/template_server:latest`. Anytime there are modifications made to the server folder of the 
+It it hosted at `ghcr.io/portalhubyt/template_server:1_19_4`. Anytime there are modifications made to the server folder of the 
 repository, the image will be updated and uploaded to reflect the changes.
 
 # Usage:
 - Fetch the image
 ```
-docker pull ghcr.io/portalhubyt/template_server:latest
+docker pull ghcr.io/portalhubyt/template_server:1_19_4
 ```
 
 - Run the image
 ```
-docker run --name minecraft_server -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 ghcr.io/portalhubyt/template_server:latest 
+docker run --name minecraft_server -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 ghcr.io/portalhubyt/template_server:1_19_4 
 ```
 
 OR
 
 - Run the image with ServerTap acces
 ```
-docker run --name minecraft_server -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 -p 4567:4567 -v $(pwd)/config.yml:/server/plugins/ServerTap/config.yml ghcr.io/portalhubyt/template_server:latest
+docker run --name minecraft_server -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 -p 4567:4567 -v $(pwd)/config.yml:/server/plugins/ServerTap/config.yml ghcr.io/portalhubyt/template_server:1_19_4
 ```
 You need a config.yml where you're running the command that contains:
 ```yml

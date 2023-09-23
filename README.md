@@ -1,8 +1,8 @@
-# Template 1.20 Minecraft Server
+# Template 1.19.4 Minecraft Server
 
 IMPORTANT: The rate limit for players packets has been disabled in the paper config; beware for use in production
 
-This is an automated repository that automatically uploads a **template 1.20 minecraft server** to the GitHub Container Registry.
+This is an automated repository that automatically uploads a **template 1.19.4 minecraft server** to the GitHub Container Registry.
 It it hosted at `ghcr.io/portalhubyt/template_server:latest`. Anytime there are modifications made to the server folder of the 
 repository, the image will be updated and uploaded to reflect the changes.
 
@@ -17,6 +17,18 @@ docker pull ghcr.io/portalhubyt/template_server:latest
 docker run --name minecraft_server -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 ghcr.io/portalhubyt/template_server:latest 
 ```
 
+OR
+
+- Run the image with ServerTap acces
+```
+docker run --name minecraft_server -d --pull=always -e EULA=TRUE -p 25575:25575 -p 25565:25565 -p 4567:4567 -v $(pwd)/config.yml:/server/plugins/ServerTap/config.yml ghcr.io/portalhubyt/template_server:latest
+```
+You need a config.yml where you're running the command that contains:
+```yml
+useKeyAuth: true
+key: Your-Auth-Key (can be whatever)
+```
+---
 Mandatory options:
 - `-e EULTA=TRUE` Needed to accept Spigot's EULA before launching.
 - `-p 555:25565` Port redirection, left is on host, right is in container. That means we make the server available on host's 555 port.

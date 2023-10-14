@@ -1,21 +1,19 @@
 config:
-  gamemasters: &gamemasters |-
-    PortalHub
-    prtl
-    funyrom
-    StarlightmOB
-  manual_plugins: |-
-    'https://ci.athion.net/job/FastAsyncWorldEdit/lastSuccessfulBuild/'
-    'https://ci.citizensnpcs.co/job/Citizens2/lastSuccessfulBuild/'
-    'https://ci.dmulloy2.net/job/ProtocolLib/lastSuccessfulBuild/'
+  gamemasters: &gamemasters
+    - PortalHub
+    - prtl
+    - funyrom
+    - StarlightmOB
+  jenkins_plugins: |-
+    https://ci.citizensnpcs.co/job/Citizens2/
+    https://ci.athion.net/job/FastAsyncWorldEdit/
+    https://ci.dmulloy2.net/job/ProtocolLib/
 
-
-################################################################################
-#         Default image, will be altered so not compatible with vanilla        #
-#         gameplay but will look like a normal world with normal features      #
-################################################################################
-
-classic:
+images:
+  ##############################################################################
+  #         Default value for a "vanilla" server, no custom changes.           #
+  ##############################################################################
+  default: &default
   # java:
     MEMORY: "6G"
     JVM_DD_OPTS: "disable.watchdog:true"
@@ -26,10 +24,18 @@ classic:
     EULA: true
     TYPE: "PAPER"
     ENABLE_ROLLING_LOGS: true
-  
+
+    COPY_PLUGINS_SRC: "/tmp/plugins" # Important! Copies jenkins & other plugins
+
+  ##############################################################################
+  #         Normal world, but altered to fit our basic needs for production    #
+  ##############################################################################
+  classic: &classic
+    <<: *default
+
   # profile:
     SERVER_NAME: "PortalHub Private Server"
-    MOTD: "§6§lTiktok §f§lStream §6§lServer"
+    MOTD: "Tiktok Stream Server"
 
   # administrators:
     OPS: *gamemasters
@@ -48,7 +54,7 @@ classic:
 
   # features:
     ENABLE_AUTOPAUSE: true
-    MAX_TICK_TIME: "-1"
+    MAX_TICK_TIME: -1
     RESOURCE_PACK_ENFORCE: true
     ENABLE_COMMAND_BLOCK: true
 
@@ -56,30 +62,23 @@ classic:
     SPIGET_RESOURCES: "22017,81,390,13730,25391,81534"
     VANILLATWEAKS_SHARECODE: "hmBMOR"
 
-  # considered:
-    # FORCE_REDOWNLOAD: true
+  ##############################################################################
+  #           Genereate a flat world, sets some base gamerules                 #
+  ##############################################################################
+  flat: &flat
+    <<: *classic
+    LEVEL_TYPE: "FLAT"
+    GENERATE_STRUCTURES: false
+    RCON_CMDS_STARTUP: |-
+      gamerule doFireTick false
+      gamerule doDaylightCycle false
+      gamerule doWeatherCycle false
+      gamerule doMobSpawning false
+      gamerule doImmediateRespawn true
 
-################################################################################
-#           Genereate a flat world, sets some base gamerules                   #
-################################################################################
-
-flat: &flat
-  <<: *classic
-  LEVEL_TYPE: "FLAT"
-  GENERATE_STRUCTURES: false
-  RCON_CMDS_STARTUP: |-
-    gamerule doFireTick false
-    gamerule doDaylightCycle false
-    gamerule doWeatherCycle false
-    gamerule doMobSpawning false
-    gamerule doImmediateRespawn true
-
-
-################################################################################
-#               Void world, no blocks, no mobs, no nothing                     #
-################################################################################
-void:
-  <<: *flat
-  GENERATOR_SETTINGS: '{"biome":"minecraft:the_void","layers":[{"block":"air","height":1}]}'
-
-################################################################################
+  ##############################################################################
+  #               Void world, no blocks, no mobs, no nothing                   #
+  ##############################################################################
+  void:
+    <<: *flat
+    GENERATOR_SETTINGS: '{"biome":"minecraft:the_void","layers":[{"block":"air","height":1}]}'

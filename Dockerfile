@@ -1,4 +1,5 @@
 # https://github.com/itzg/docker-minecraft-server
+# Base image
 FROM itzg/minecraft-server:latest
 
 # Install Python
@@ -6,18 +7,21 @@ RUN apt-get update \
     && apt-get install -y python3 python3-pip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN pip install requests
+# Install required Python packages
+RUN pip install requests pyyaml
 
-# Copy and run the plugin fetching script
-COPY fetch_plugins.py /tmp/fetch_plugins.py
-RUN python3 /tmp/fetch_plugins.py
-
+# Copy necessary files
+COPY prepare.py /tmp/prepare.py
 COPY profile.yml /tmp/profile.yml
-COPY parse.py /tmp/parse.py
-RUN python3 /tmp/parse.py /tmp/profile.yml
 
-# Copy the .env file
-COPY /tmp/.env .env
+# Accept the IMG_TAG as a prepare argument
+ARG IMG_TAG=classic
+ARG DEBUG=false
 
-# Placeholder CMD (replace with your actual application)
-CMD ["/start"]
+# Run the prepare.py script with the provided IMG_TAG
+RUN python3 /tmp/prepare.py $IMG_TAG $DEBUG
+
+COPY dockman.sh /tmp/
+RUN chmod +x /tmp/dockman.sh
+
+ENTRYPOINT [ "/tmp/dockman.sh", "--entrypoint" ]

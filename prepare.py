@@ -49,6 +49,7 @@ class DockerBuilder:
         for link in self.config.jenkins_links.split('\n'):
             target_build = link + "lastSuccessfulBuild/"
             api = target_build + 'api/json'
+            print(requests.get(api).content)
             manifest = requests.get(api).json()
             filepath = manifest["artifacts"][0]["relativePath"]
             filename = manifest["artifacts"][0]["fileName"]

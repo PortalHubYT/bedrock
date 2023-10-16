@@ -10,6 +10,13 @@ config:
  #   https://ci.dmulloy2.net/job/ProtocolLib/ # Causes CloudFlare issues during
  # Github Actions so reverting back to czlling it using Spiget (caused bugs too)
 
+
+
+################################################################################
+#     https://docker-minecraft-server.readthedocs.io/en/latest/variables/      #
+#              For references to help create a new profile                     #
+################################################################################
+
 images:
   ##############################################################################
   #         Default value for a "vanilla" server, no custom changes.           #

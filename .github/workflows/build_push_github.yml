@@ -3,7 +3,7 @@ on: push
 
 jobs:
   docker:
-    name: Build push
+    name: Build and push
     runs-on: ubuntu-latest
     steps:
       -
@@ -20,12 +20,31 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ghcr.io/portalhubyt/template_server:latest
+        name: Install yq for YAML parsing
+        run: sudo apt-get update && sudo apt-get install -y jq && wget -O /tmp/yq https://github.com/mikefarah/yq/releases/download/v4.6.1/yq_linux_amd64 && chmod +x /tmp/yq && sudo mv /tmp/yq /usr/local/bin/
       -
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        name: Checkout code
+        uses: actions/checkout@v2
+          
+      -
+        name: Print working directory
+        run: pwd
+      -
+        name: List files in current directory
+        run: ls -al
+      -
+        name: Extract image names from profile.yml
+        id: extract-images
+        run: |
+            IMAGES=$(yq e '.images | keys | join(",")' profile.yml)
+            echo "Extracted Images: $IMAGES"
+            echo "::set-output name=images::$IMAGES"
+      -
+        name: Build and push images
+        run: |
+          IFS=',' read -ra IMGS <<< "${{ steps.extract-images.outputs.images }}"
+          for i in "${IMGS[@]}"; do
+            echo "Building image with tag: $i"
+            docker build --build-arg IMG_TAG="$i" -t ghcr.io/portalhubyt/${{ github.event.repository.name }}:$i -f Dockerfile .
+            docker push ghcr.io/portalhubyt/${{ github.event.repository.name }}:$i
+          done

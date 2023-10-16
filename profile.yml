@@ -1,0 +1,92 @@
+config:
+  gamemasters: &gamemasters
+    - PortalHub
+    - prtl
+    - funyrom
+    - StarlightmOB
+  jenkins_plugins: |-
+    https://ci.citizensnpcs.co/job/Citizens2/
+    https://ci.athion.net/job/FastAsyncWorldEdit/
+ #   https://ci.dmulloy2.net/job/ProtocolLib/ # Causes CloudFlare issues during
+ # Github Actions so reverting back to czlling it using Spiget (caused bugs too)
+
+
+
+################################################################################
+#     https://docker-minecraft-server.readthedocs.io/en/latest/variables/      #
+#              For references to help create a new profile                     #
+################################################################################
+
+images:
+  ##############################################################################
+  #         Default value for a "vanilla" server, no custom changes.           #
+  ##############################################################################
+  default: &default
+  # java:
+    MEMORY: "6G"
+    JVM_DD_OPTS: "disable.watchdog:true"
+    USE_AIKAR_FLAGS: true
+
+  # metadata:
+    VERSION: "1.20.2"
+    EULA: true
+    TYPE: "PAPER"
+    ENABLE_ROLLING_LOGS: true
+
+    COPY_PLUGINS_SRC: "/tmp/plugins" # Important! Copies jenkins & other plugins
+
+  ##############################################################################
+  #         Normal world, but altered to fit our basic needs for production    #
+  ##############################################################################
+  classic: &classic
+    <<: *default
+
+  # profile:
+    SERVER_NAME: "PortalHub Private Server"
+    MOTD: "Tiktok Stream Server"
+
+  # administrators:
+    OPS: *gamemasters
+    WHITELIST: *gamemasters
+    ENABLE_WHITELIST: true
+    ENFORCE_WHITELIST: true
+    OVERRIDE_WHITELIST: true
+    BROADCAST_RCON_TO_OPS: true
+
+  # settings:
+    SPAWN_PROTECTION: 0
+    VIEW_DISTANCE: 32
+    SIMULATION_DISTANCE: 32
+    MODE: creative
+    PVP: true
+
+  # features:
+    ENABLE_AUTOPAUSE: true
+    MAX_TICK_TIME: -1
+    RESOURCE_PACK_ENFORCE: true
+    ENABLE_COMMAND_BLOCK: true
+
+  # plugins:
+    SPIGET_RESOURCES: "1997,22017,81,390,13730,25391,81534"
+    VANILLATWEAKS_SHARECODE: "hmBMOR"
+
+  ##############################################################################
+  #           Genereate a flat world, sets some base gamerules                 #
+  ##############################################################################
+  flat: &flat
+    <<: *classic
+    LEVEL_TYPE: "FLAT"
+    GENERATE_STRUCTURES: false
+    RCON_CMDS_STARTUP: |-
+      gamerule doFireTick false
+      gamerule doDaylightCycle false
+      gamerule doWeatherCycle false
+      gamerule doMobSpawning false
+      gamerule doImmediateRespawn true
+
+  ##############################################################################
+  #               Void world, no blocks, no mobs, no nothing                   #
+  ##############################################################################
+  void:
+    <<: *flat
+    GENERATOR_SETTINGS: '{"biome":"minecraft:the_void","layers":[{"block":"air","height":1}]}'

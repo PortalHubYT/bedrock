@@ -1,15 +1,2 @@
-server/server.properties
-server/logs/latest.log
-server/eula.txt
-server/logs/*.log.gz
-server/version_history.json
-server/config/paper-global.yml
-server/plugins/Chunky/config.yml
-server/plugins/FastAsyncWorldEdit/config.yml
-server/plugins/LibsDisguises/mappings_cache
-server/plugins/Multiverse-Core/worlds.yml
-server/plugins/ProtocolLib/lastupdate
-server/plugins/WorldGuard/*
-server/world/*
-server/world_the_end/*
-server/world_nether/*
+config.yaml
+server_data/*

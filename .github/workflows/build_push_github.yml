@@ -45,6 +45,6 @@ jobs:
           IFS=',' read -ra IMGS <<< "${{ steps.extract-images.outputs.images }}"
           for i in "${IMGS[@]}"; do
             echo "Building image with tag: $i"
-            docker build --build-arg IMG_TAG="$i" -t ghcr.io/portalhubyt/template_server:$i -f Dockerfile .
+            docker build --build-arg IMG_TAG="$i" -t ghcr.io/portalhubyt/${{ github.repository }}:$i -f Dockerfile .
             docker push ghcr.io/portalhubyt/template_server:$i
           done

@@ -40,11 +40,21 @@ jobs:
             echo "Extracted Images: $IMAGES"
             echo "::set-output name=images::$IMAGES"
       -
+        name: Extract minecraft version from profile.yml
+        id: extract-mc-version
+        run: |
+            MC_VERSION=$(yq e '.images.default.VERSION' profile.yml)
+            MODIFIED_VERSION=${VERSION//./_}
+            echo "Extracted Version: $MODIFIED_VERSION"
+            echo "::set-output name=mc_version::$MODIFIED_VERSION"
+        
+      -
         name: Build and push images
         run: |
-          IFS=',' read -ra IMGS <<< "${{ steps.extract-images.outputs.images }}"
-          for i in "${IMGS[@]}"; do
-            echo "Building image with tag: $i"
-            docker build --build-arg IMG_TAG="$i" -t ghcr.io/portalhubyt/${{ github.event.repository.name }}:$i -f Dockerfile .
-            docker push ghcr.io/portalhubyt/${{ github.event.repository.name }}:$i
-          done
+            IFS=',' read -ra IMGS <<< "${{ steps.extract-images.outputs.images }}"
+            for i in "${IMGS[@]}"; do
+                TAG="${MODIFIED_VERSION}_$i"
+                echo "Building image with tag: $TAG"
+                docker build --build-arg IMG_TAG="$TAG" -t ghcr.io/portalhubyt/${{ github.event.repository.name }}:$TAG -f Dockerfile .
+                docker push ghcr.io/portalhubyt/${{ github.event.repository.name }}:$TAG
+            done

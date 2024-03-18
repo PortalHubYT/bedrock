@@ -51,6 +51,7 @@ jobs:
       -
         name: Build and push images
         run: |
+            MODIFIED_VERSION="${{ steps.extract-mc-version.outputs.mc_version }}"
             IFS=',' read -ra IMGS <<< "${{ steps.extract-images.outputs.images }}"
             for i in "${IMGS[@]}"; do
                 TAG="${MODIFIED_VERSION}_$i"

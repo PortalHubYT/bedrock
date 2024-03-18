@@ -67,7 +67,7 @@ images:
     ENABLE_COMMAND_BLOCK: true
 
   # plugins:
-    SPIGET_RESOURCES: "1997,22017,81,390,13730,25391,81534,26585,1884"
+    SPIGET_RESOURCES: "1997,22017,81,390,13730,25391,81534,26585"
     VANILLATWEAKS_SHARECODE: "hmBMOR"
 
   ##############################################################################

@@ -1,6 +1,6 @@
-# Template 1.20.2 Minecraft Server
+# Template Minecraft Server
 
-This is an automated repository that automatically uploads a **template 1.20.2 minecraft server** to the GitHub Container Registry.
+This is an automated repository that automatically uploads a **template minecraft server** to the GitHub Container Registry.
 It it hosted at `ghcr.io/portalhubyt/template_server:(tag)`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
 
 # Usage:
@@ -22,6 +22,17 @@ Mandatory options:
 Additional options:
 - `-d` Run in detach mode (background).
 - `--pull=always` This is will always attempt to update the local image, will do nothing if you're up-to-date.
+
+# Tags:
+The tags are the names of the sub-sections of "images" in `profile.yml`.
+So far here's the tags available:
+- default
+- classic
+- flat
+- void
+
+You have to prepend the tag by a Minecraft version like-wise: 1_20_4.
+Not all versions are available, please refers to the [package page](https://github.com/orgs/PortalHubYT/packages?repo_name=bedrock)
 
 # Plugins:
 | Name + Link        | Description           |

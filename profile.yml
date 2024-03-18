@@ -28,7 +28,7 @@ images:
     USE_AIKAR_FLAGS: true
 
   # metadata:
-    VERSION: "1.20.2"
+    VERSION: "1.20.4"
     EULA: true
     TYPE: "PAPER"
     ENABLE_ROLLING_LOGS: true

@@ -11,7 +11,7 @@ docker pull ghcr.io/portalhubyt/bedrock:1_20_4_flat
 
 - Run the image (default/classic/flat/void - refer to profile.yml)
 ```
-docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/bedrock:flat
+docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/bedrock:1_20_4_flat
 ```
 ---
 Mandatory options:

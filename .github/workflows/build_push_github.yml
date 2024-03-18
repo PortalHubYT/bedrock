@@ -44,7 +44,7 @@ jobs:
         id: extract-mc-version
         run: |
             MC_VERSION=$(yq e '.images.default.VERSION' profile.yml)
-            MODIFIED_VERSION=${VERSION//./_}
+            MODIFIED_VERSION=${MC_VERSION//./_}
             echo "Extracted Version: $MODIFIED_VERSION"
             echo "::set-output name=mc_version::$MODIFIED_VERSION"
         

@@ -1,17 +1,17 @@
 # Template Minecraft Server
 
 This is an automated repository that automatically uploads a **template minecraft server** to the GitHub Container Registry.
-It it hosted at `ghcr.io/portalhubyt/template_server:(tag)`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
+It it hosted at `ghcr.io/portalhubyt/bedrock:(tag)`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
 
 # Usage:
-- Fetch the image
+- Fetch the image (here, flat for 1.20.4)
 ```
-docker pull ghcr.io/portalhubyt/template_server:flat
+docker pull ghcr.io/portalhubyt/bedrock:1_20_4_flat
 ```
 
 - Run the image (default/classic/flat/void - refer to profile.yml)
 ```
-docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/template_server:flat
+docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/bedrock:flat
 ```
 ---
 Mandatory options:

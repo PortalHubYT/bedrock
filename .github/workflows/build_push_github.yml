@@ -56,6 +56,6 @@ jobs:
             for i in "${IMGS[@]}"; do
                 TAG="${MODIFIED_VERSION}_$i"
                 echo "Building image with tag: $TAG"
-                docker build --build-arg IMG_TAG="$TAG" -t ghcr.io/portalhubyt/${{ github.event.repository.name }}:$TAG -f Dockerfile .
+                docker build --build-arg IMG_TAG="$i" -t ghcr.io/portalhubyt/${{ github.event.repository.name }}:$TAG -f Dockerfile .
                 docker push ghcr.io/portalhubyt/${{ github.event.repository.name }}:$TAG
             done

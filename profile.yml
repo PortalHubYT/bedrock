@@ -28,7 +28,7 @@ images:
     USE_AIKAR_FLAGS: true
 
   # metadata:
-    VERSION: "1.20.5"
+    VERSION: "1.20.4"
     EULA: true
     TYPE: "PAPER"
     ENABLE_ROLLING_LOGS: true
@@ -67,7 +67,7 @@ images:
     ENABLE_COMMAND_BLOCK: true
 
   # plugins:
-    SPIGET_RESOURCES: "1997,22017,81,390,13730,25391,81534,26585,1884"
+    SPIGET_RESOURCES: "1997,22017,81,390,13730,25391,81534,26585"
     VANILLATWEAKS_SHARECODE: "hmBMOR"
 
   ##############################################################################

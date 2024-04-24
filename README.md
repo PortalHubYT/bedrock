@@ -4,14 +4,14 @@ This is an automated repository that automatically uploads a **template minecraf
 It it hosted at `ghcr.io/portalhubyt/bedrock:(tag)`. Anytime there are modifications made to the server folder of the repository, the image will be updated and uploaded to reflect the changes.
 
 # Usage:
-- Fetch the image (here, flat for 1.20.4)
+- Fetch the image (here, flat for 1.20.5)
 ```
-docker pull ghcr.io/portalhubyt/bedrock:1_20_4_flat
+docker pull ghcr.io/portalhubyt/bedrock:1_20_5_flat
 ```
 
 - Run the image (default/classic/flat/void - refer to profile.yml)
 ```
-docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/bedrock:1_20_4_flat
+docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/bedrock:1_20_5_flat
 ```
 ---
 Mandatory options:
@@ -31,7 +31,7 @@ So far here's the tags available:
 - flat
 - void
 
-You have to prepend the tag by a Minecraft version like-wise: 1_20_4.
+You have to prepend the tag by a Minecraft version like-wise: 1_20_5.
 Not all versions are available, please refers to the [package page](https://github.com/orgs/PortalHubYT/packages?repo_name=bedrock)
 
 # Plugins:

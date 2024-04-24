@@ -15,8 +15,8 @@ docker run -d -it -p 25565:25565 ghcr.io/portalhubyt/bedrock:1_20_5_flat
 ```
 ---
 Mandatory options:
-- `-e EULTA=TRUE` Needed to accept Spigot's EULA before launching.
-- `-p 555:25565` Port redirection, left is on host, right is in container. That means we make the server available on host's 555 port.
+- `-e EULA=TRUE` Needed to accept Spigot's EULA before launching.
+- `-p 25556:25565` Port redirection, left is on host, right is in container. That means we make the server available on host's 555 port.
 - `--network host` **If you don't use -p**, it'll use host's network interfaces.
 
 Additional options:

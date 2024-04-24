@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Install yq for YAML parsing
-        run: sudo apt-get update && sudo apt-get install -y jq && wget -O /tmp/yq https://github.com/mikefarah/yq/releases/download/v4.6.1/yq_linux_amd64 && chmod +x /tmp/yq && sudo mv /tmp/yq /usr/local/bin/
+        run: sudo apt-get update && sudo apt-get install -y jq && wget -O /tmp/yq https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 && chmod +x /tmp/yq && sudo mv /tmp/yq /usr/local/bin/
       -
         name: Checkout code
         uses: actions/checkout@v2
